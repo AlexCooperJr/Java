@@ -1,0 +1,204 @@
+import java.util.*;
+import java.util.ArrayList;
+import java.lang.Math;
+
+class Casino{
+public static void main(String args[]){
+    System.out.println("Hello, Welcome to The Casino! What would you like to play?: ");
+    Scanner user_input= new Scanner(System.in);
+    String game=user_input.nextLine();
+    String play_again="Y";
+    if(game.toUpperCase().equals("BLACKJACK")){
+   do{
+    System.out.println("");
+    ArrayList<Integer> player_hand=new ArrayList<Integer>();
+    ArrayList<Integer> dealer_hand=new ArrayList<Integer>();
+    int [] deck= {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
+    int max=51;
+    int min=1;
+    int range=max-min+1;
+   player_hand.add(deck[(int)(Math.random()*range+1)]); 
+   player_hand.add(deck[(int)(Math.random()*range+1)]); 
+   dealer_hand.add(deck[(int)(Math.random()*range+1)]); 
+   dealer_hand.add(deck[(int)(Math.random()*range+1)]); 
+   int player_sum=0;
+   int player_sum2=0;
+   int dealer_sum=0;
+   int dealer_sum2=0;
+   player_sum=player_hand.get(0)+player_hand.get(1);
+   dealer_sum=dealer_hand.get(0)+dealer_hand.get(1);
+   player_sum2=player_sum+10;
+   dealer_sum2=dealer_sum+10;
+   int dis_from_21P=21-player_sum;
+   int dis_from_21D=21-dealer_sum;
+   String player_hand_string="";
+   String dealer_hand_string="";
+   String dealer_hand_reveal=dealer_hand.get(0)+"";
+
+   player_hand_string+=player_hand.get(0)+",";
+   player_hand_string+=player_hand.get(1);
+   dealer_hand_string+=dealer_hand.get(0)+",";
+   dealer_hand_string+=dealer_hand.get(1);
+
+   if(player_hand.contains(1)){
+      if(dealer_hand.contains(1)){
+         if(player_sum2==21){
+            if((dealer_sum2==21)){
+            System.out.println("You Both Have 21...Its a Draw!");
+            System.out.println("You had: "+player_hand_string);
+            System.out.println("The House had: "+dealer_hand_string);
+            System.out.println("Would You Like To Play Again? Y or N: ");
+            play_again=user_input.nextLine();     
+   }}}}
+   if(player_hand.contains(1)){
+      if(dealer_hand.contains(1)){
+         if(player_sum2==21){
+            if(!(dealer_sum2==21)){
+            System.out.println("You Have 21...Player Wins!");
+            System.out.println("You Had: "+player_hand_string);
+            System.out.println("The House Had: "+dealer_hand_string);
+            System.out.println("Would You Like To Play Again? Y or N: ");
+            play_again=user_input.nextLine();
+   }}}}
+   if(player_hand.contains(1)){
+      if(dealer_hand.contains(1)){
+         if(dealer_sum2==21){
+         if(!(player_sum2==21)){
+            System.out.println("The House Has 21...The House Wins!");
+            System.out.println("You Had: "+player_hand_string);
+            System.out.println("The House Had: "+dealer_hand_string);
+            System.out.println("Would You Like To Play Again? Y or N: ");
+            play_again=user_input.nextLine();    
+   }}}}
+   if(player_hand.contains(1)){
+      if(!dealer_hand.contains(1)){
+         if(player_sum2==21){
+            System.out.println("You Have 21...Player Wins!");
+            System.out.println("You Had: "+player_hand_string);
+            System.out.println("The House Had: "+dealer_hand_string);
+            System.out.println("Would You Like To Play Again? Y or N: ");
+            play_again=user_input.nextLine();    
+   }}}
+   if(!(player_hand.contains(1))){
+      if(dealer_hand.contains(1)){
+         if(dealer_sum2==21){
+            System.out.println("The House Has 21...The House Wins!");
+            System.out.println("You Had: "+player_hand_string);
+            System.out.println("The House Had: "+dealer_hand_string);
+            System.out.println("Would You Like To Play Again? Y or N: ");
+            play_again=user_input.nextLine();    
+   }}}
+   System.out.println("Your hand: "+player_hand_string);
+   if(!player_hand.contains(1)){
+      System.out.println("Your current sum is: "+player_sum);
+   }
+   if(player_hand.contains(1)){
+      System.out.println("Your current sum is: "+player_sum+" or "+player_sum2);
+   }
+   System.out.println("The House Reveals: "+dealer_hand_reveal);
+   System.out.println("What Would You Like To Do? Hit or Stay?");
+   String choice=user_input.nextLine();
+
+   if (choice.toUpperCase().contains("S")) {
+      while(dealer_sum<17){
+         dealer_hand.add(deck[(int)(Math.random()*range+1)]);
+         dealer_sum=dealer_sum+dealer_hand.get(dealer_hand.size()-1);
+         dealer_hand_string+=","+dealer_hand.get(dealer_hand.size()-1);
+      }
+      if(dealer_hand.contains(1)&&dealer_sum2<21){
+         dis_from_21D=21-dealer_sum2;
+      }
+      if(player_hand.contains(1)&&dealer_sum2<21){
+         dis_from_21P=21-player_sum2;
+      }
+      if(dealer_sum==21){
+         System.out.println("The Dealer Has 21 The House wins");
+         System.out.println("The House Has..."+dealer_hand_string);
+         System.out.println("Would You Like To Play Again?");
+         choice=user_input.nextLine().toUpperCase();
+      }
+      if(dis_from_21D>dis_from_21P){
+         System.out.println("The Player Wins");
+         System.out.println("The Dealer Had..."+dealer_hand_string);
+         System.err.println(dealer_sum);
+      }
+      if(dis_from_21P>dis_from_21D){
+         System.out.println("The House Wins");
+         System.out.println("The Dealer had..."+dealer_hand_string);
+      }
+      if(dis_from_21D==dis_from_21P){
+         System.out.println("It's a Draw");
+      }
+      System.out.println("Would You Like To Play Again? Y or N?: ");
+      play_again=user_input.nextLine().toUpperCase();
+   }
+   while ((choice.toUpperCase().contains("H"))) {
+      player_hand.add(deck[(int)(Math.random()*range+1)]);
+      int len=player_hand.size();
+      player_sum+=player_hand.get(len-1);
+      if(player_hand.contains(1)){
+         player_sum2+=player_hand.get(len-1);
+      }
+      player_hand_string=player_hand_string+","+player_hand.get(len-1);
+      System.out.println("Your Hand: "+player_hand_string);
+      if(player_hand.contains(1)){
+         if(player_sum2<=21){
+            System.out.println("Your Current Sum Is: "+player_sum+" or "+player_sum2);
+         }
+         if(player_sum2>21){
+            System.out.println("Your Current Sum Is: "+player_sum);
+         }
+      }
+      else{
+         System.out.println("Your Current Sum Is: "+player_sum);
+      }
+      if (player_sum>21) {
+         System.out.println("You Busted...House Wins!");
+         System.out.println("Would You Like To Play Again? Y or N: ");
+         play_again=user_input.nextLine().toUpperCase();
+         break;
+   }
+      System.out.println("What Would You Like To Do? Hit or Stay?");
+      choice=user_input.nextLine();
+      System.out.println(" ");
+   if (choice.toUpperCase().contains("S")) {
+      while(dealer_sum<17){
+         dealer_hand.add(deck[(int)(Math.random()*range+1)]);
+         dealer_sum=dealer_sum+dealer_hand.get(dealer_hand.size()-1);
+         dealer_hand_string+=","+dealer_hand.get(dealer_hand.size()-1);
+      }
+      if(dealer_sum>21){
+         System.out.println("The House Busted...Player Wins");
+         System.out.println("The Dealer Had..."+dealer_hand_string);
+         System.out.println("Would you like to play again? Y or N: ");
+         choice=user_input.nextLine().toUpperCase();
+         break;
+      }
+      dis_from_21D=21-dealer_sum;
+      dis_from_21P=21-player_sum;
+      if(player_hand.contains(1)&&player_sum2<=21){
+         dis_from_21P=21-player_sum2;
+      }
+      if(dealer_hand.contains(1)&&dealer_sum2<=21){
+         dis_from_21D=21-dealer_sum2;
+      }
+      if(dis_from_21D==dis_from_21P){
+         System.out.println("It's a Draw");
+         System.out.println("The Dealer had..."+dealer_hand_string);
+      }
+      if(dis_from_21D>dis_from_21P){
+         System.out.println("The Player Wins");
+         System.out.println("The Dealer Had..."+dealer_hand_string);
+         System.out.println(dealer_sum);
+   
+      }
+      if(dis_from_21P>dis_from_21D){
+         System.out.println("The House Wins");
+         System.out.println("The Dealer had..."+dealer_hand_string);
+      }
+      System.out.println("Would You Like To Play Again? Y or N?: ");
+      play_again=user_input.nextLine().toUpperCase();
+   }
+}}while(play_again.contains("Y"));}
+System.out.println("Thank You For Playing!  :)");
+System.exit(0);}}
