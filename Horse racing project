@@ -1,0 +1,175 @@
+import java.util.*;
+import java.lang.Math;
+
+class HorseRace{
+public static void main(String args[]){
+
+System.out.println("Welcome to ChurchHill Downs!");
+System.out.println("Please select a difficulty:"+ " ");
+System.out.print("Easy , Medium , Hard:"+" ");
+Scanner user_input = new Scanner(System.in);
+   String difficulty = user_input.next();
+   String choice = " ";
+int money=10;
+while(!("Easy Medium Hard".toUpperCase().contains(difficulty.toUpperCase()))){
+   System.out.print("Please enter a valid input:"+ " ");
+   difficulty = user_input.next();}
+difficulty= difficulty.toUpperCase();
+
+if(difficulty.contains("EASY")){
+do{
+
+int SeaBiscuit= 1;
+int Rocky= 2;
+int Chief= 3;
+int Dakota= 4;
+
+int max=4;
+int min=1;
+int fast;
+int range= max-min +1;
+int [] participants= {1,2,3,4};
+System.out.print("Please enter the number of the horse you think will win!");
+System.out.println("#1 SeaBiscuit, #2 Rocky, #3 Chief, #4 Dakota:"+ " ");
+int winner= user_input.nextInt();
+if(0>winner){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+if(winner>max){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+System.out.print("You currently have $" + money + "!"+ " ");
+System.out.print("Please enter wager amount:" + " ");
+int bet=user_input.nextInt();
+if(bet>money){
+System.out.print("Please enter a valid amount:" + " ");}
+fast=(int)(Math.random()*range+1); 
+System.out.println("And the winner is..."+ " " +"#"+fast);
+if (winner== fast){
+System.out.println("You Win!");
+money+=bet*4;}
+else{
+System.out.println("Better luck next time");
+   money=money-bet;}
+if(money>0){
+   System.out.print("Would you like to play again? Y or N:" + " ");
+   choice = user_input.next();
+   choice.toUpperCase();} 
+if("Yy".contains(choice)){
+difficulty="EASY";}
+if("Nn".contains(choice)){
+   System.out.print("Thanks for playing! Have a great day!");
+   System.exit(0);}
+if(money<=0){
+   System.out.println("Please exit and try again");
+   System.exit(0);
+   }}while(difficulty=="EASY");}
+ 
+
+
+if(difficulty.contains("MEDIUM")){
+do{
+
+int SeaBiscuit= 1;
+int Rocky= 2;
+int Chief= 3;
+int Dakota= 4;
+int Apollo= 5;
+int Stormy= 6;
+
+int max=6;
+int min=1;
+int fast;
+int range= max-min +1;
+int [] participants= {1,2,3,4,5,6};
+System.out.print("Please enter the number of the horse you think will win!");
+System.out.println("#1 SeaBiscuit, #2 Rocky, #3 Chief, #4 Dakota, #5 Apollo, #6 Stormy:"+ " ");
+int winner= user_input.nextInt();
+if(0>winner){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+if(winner>max){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+System.out.print("You currently have $" + money + "!"+ " ");
+System.out.print("Please enter wager amount:" + " ");
+int bet=user_input.nextInt();
+if(bet>money){
+System.out.print("Please enter a valid amount:" + " ");}
+fast=(int)(Math.random()*range+1); 
+System.out.println("And the winner is..."+ " " +"#"+fast);
+if (winner== fast){
+System.out.println("You Win!");
+money+=bet*6;}
+else{
+System.out.println("Better luck next time");
+   money=money-bet;}
+if(money>0){
+   System.out.print("Would you like to play again? Y or N:" + " ");
+   choice = user_input.next();
+   choice.toUpperCase();} 
+if("Yy".contains(choice)){
+difficulty="MEDIUM";}
+if("Nn".contains(choice)){
+   System.out.print("Thanks for playing! Have a great day!");
+   System.exit(0);}
+if(money<=0){
+   System.out.println("Please exit and try again");
+   System.exit(0);
+   }}while(difficulty=="MEDIUM");}
+
+if(difficulty.contains("HARD")){
+do{
+
+int SeaBiscuit= 1;
+int Rocky= 2;
+int Chief= 3;
+int Dakota= 4;
+int Apollo= 5;
+int Stormy= 6;
+int Pegasus= 7;
+int Ken= 8;
+int Eclipse= 9;
+
+int max=9;
+int min=1;
+int fast;
+int range= max-min +1;
+int [] participants= {1,2,3,4,5,6,7,8,9};
+System.out.print("Please enter the number of the horse you think will win!");
+System.out.println("#1 SeaBiscuit, #2 Rocky, #3 Chief, #4 Dakota, #5 Apollo, #6 Stormy, #7 Pegasus, #8 Ken, #9 Eclipse:"+ " ");
+int winner= user_input.nextInt();
+if(0>winner){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+if(winner>max){
+   System.out.print("Please enter a valid number:" + " ");
+   winner=user_input.nextInt();}
+System.out.print("You currently have $" + money + "!"+ " ");
+System.out.print("Please enter wager amount:" + " ");
+int bet=user_input.nextInt();
+if(bet>money){
+System.out.print("Please enter a valid amount:" + " ");}
+fast=(int)(Math.random()*range+1); 
+System.out.println("And the winner is..."+ " " +"#"+fast);
+if (winner== fast){
+System.out.println("You Win!");
+money+=bet*9;}
+else{
+System.out.println("Better luck next time");
+   money=money-bet;}
+if(money>0){
+   System.out.print("Would you like to play again? Y or N:" + " ");
+   choice = user_input.next();
+   choice.toUpperCase();} 
+if("Yy".contains(choice)){
+difficulty="HARD";}
+if("Nn".contains(choice)){
+   System.out.print("Thanks for playing! Have a great day!");
+   System.exit(0);}
+if(money<=0){
+   System.out.println("Please exit and try again");
+   System.exit(0);
+   }}while(difficulty=="HARD");}
+   
+}}
